@@ -4,31 +4,22 @@ FROM runpod/pytorch:2.1.0-py3.10-cuda11.8.0-devel-ubuntu22.04
 WORKDIR /app
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     wget \
     git \
-    python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Python dependencies
-RUN pip install --no-cache-dir \
-    diffusers==0.24.0 \
-    transformers==4.36.0 \
-    accelerate==0.25.0 \
-    torch==2.1.0 \
-    torchvision==0.16.0 \
-    xformers==0.0.22.post7 \
-    runpod==1.5.1 \
-    requests==2.31.0 \
-    Pillow==10.1.0 \
-    safetensors==0.4.1 \
-    compel==2.0.2
+# Copy the requirements file
+COPY requirements.txt .
+
+# Install Python dependencies from requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Create directories for models
 RUN mkdir -p /app/models/checkpoints /app/models/loras /app/outputs
 
 # Copy application files
-COPY handler.py /app/
+COPY handler.py .
 
 # Set the handler
 CMD ["python", "-u", "handler.py"]
