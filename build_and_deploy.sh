@@ -10,7 +10,7 @@ echo "🚀 Starting build and deploy process..."
 # Configuration
 IMAGE_NAME="juggernaut-xl-generator"
 TAG="latest"
-DOCKER_USERNAME="sampath1976"  # Replace with your Docker Hub username
+DOCKER_USERNAME="darkreactor"  # Replace with your Docker Hub username
 
 # Ensure repository name follows Docker Hub rules (lowercase, alphanumeric, ., _, -)
 IMAGE_NAME=$(echo "$IMAGE_NAME" | tr '[:upper:]' '[:lower:]')
