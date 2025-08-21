@@ -1,3 +1,5 @@
+numpy<2
+huggingface_hub==0.16.4
 torch==2.1.0
 diffusers==0.24.0
 transformers==4.35.2
@@ -7,7 +9,3 @@ runpod>=1.2.0
 Pillow==10.1.0
 requests==2.31.0
 xformers==0.0.22.post7
-
-# Ajouts importants
-huggingface_hub==0.15.1
-numpy<2
