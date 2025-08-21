@@ -6,4 +6,8 @@ safetensors==0.4.1
 runpod>=1.2.0
 Pillow==10.1.0
 requests==2.31.0
-xformers==0.0.22.post7 
+xformers==0.0.22.post7
+
+# Ajouts importants
+huggingface_hub==0.15.1
+numpy<2
