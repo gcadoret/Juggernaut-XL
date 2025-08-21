@@ -8,6 +8,8 @@ from PIL import Image
 import json
 import requests
 import time
+import traceback
+
 
 # --- Helper Function for Downloading ---
 def download_file(url, dest_path, headers=None, max_retries=3):
@@ -131,8 +133,7 @@ def load_pipeline():
         
     except Exception as e:
         print(f"Error loading pipeline: {str(e)}")
-        # Clean up global variable on error
-        global pipeline
+        traceback.print_exc()  # ⬅ Affiche la stack complète
         pipeline = None
         raise e
 
